@@ -1,0 +1,45 @@
+[file name]: railway.json
+[file content begin]
+{
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "npm install --omit=dev"
+  },
+  "deploy": {
+    "startCommand": "node server.js",
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 30
+  },
+  "nixpacks": {
+    "config": {
+      "phases": {
+        "setup": {
+          "nixPkgs": [
+            "chromium",
+            "curl",
+            "wget",
+            "python3",
+            "py3-pip"
+          ],
+          "commands": [
+            "pip3 install requests"
+          ]
+        },
+        "install": {
+          "commands": [
+            "export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true",
+            "export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser",
+            "npm install --omit=dev"
+          ]
+        }
+      },
+      "environment": {
+        "NODE_ENV": "production",
+        "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
+        "PUPPETEER_EXECUTABLE_PATH": "/usr/bin/chromium-browser",
+        "PROXY_TEST_URL": "https://crptoajah.blogspot.com"
+      }
+    }
+  }
+}
+[file content end]
