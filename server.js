@@ -113,7 +113,8 @@ app.get('/api/test-puppeteer', async (req, res) => {
         const puppeteer = require('puppeteer-extra');
         const browser = await puppeteer.launch({ 
             headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || null
         });
         
         await browser.close();
