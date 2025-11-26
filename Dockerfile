@@ -1,6 +1,6 @@
 FROM node:18-alpine
 
-# Install dependencies untuk Puppeteer dan network tools
+# Install dependencies untuk Puppeteer
 RUN apk add --no-cache \
     chromium \
     nss \
@@ -8,22 +8,14 @@ RUN apk add --no-cache \
     harfbuzz \
     ca-certificates \
     ttf-freefont \
-    curl \
-    wget \
-    python3 \
-    py3-pip \
-    build-base
-
-# Install Python packages untuk proxy testing
-RUN pip3 install requests
+    wget
 
 # Set Puppeteer untuk menggunakan Chromium yang diinstall
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
-# Set environment variables untuk proxy support
+# Set environment variables
 ENV NODE_ENV=production
-ENV PROXY_TEST_URL=https://crptoajah.blogspot.com
 
 # Buat non-root user untuk security
 RUN addgroup -g 1001 -S nodejs
@@ -46,8 +38,8 @@ USER githubbot
 
 EXPOSE 3000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:3000/ || exit 1
+# Health check menggunakan wget (tersedia di Alpine)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1
 
 CMD ["node", "server.js"]
