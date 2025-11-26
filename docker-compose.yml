@@ -1,5 +1,3 @@
-[file name]: docker-compose.yml
-[file content begin]
 version: '3.8'
 
 services:
@@ -21,4 +19,3 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
-[file content end]
