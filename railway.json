@@ -5,23 +5,14 @@
   },
   "deploy": {
     "startCommand": "node server.js",
-    "healthcheckPath": "/",
+    "healthcheckPath": "/health",
     "healthcheckTimeout": 30
   },
   "nixpacks": {
     "config": {
       "phases": {
         "setup": {
-          "nixPkgs": [
-            "chromium",
-            "curl",
-            "wget",
-            "python3",
-            "py3-pip"
-          ],
-          "commands": [
-            "pip3 install requests"
-          ]
+          "nixPkgs": ["chromium"]
         },
         "install": {
           "commands": [
@@ -34,8 +25,7 @@
       "environment": {
         "NODE_ENV": "production",
         "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
-        "PUPPETEER_EXECUTABLE_PATH": "/usr/bin/chromium-browser",
-        "PROXY_TEST_URL": "https://crptoajah.blogspot.com"
+        "PUPPETEER_EXECUTABLE_PATH": "/usr/bin/chromium-browser"
       }
     }
   }
