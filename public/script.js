@@ -1,6 +1,3 @@
-[file name]: script.js
-[file content begin]
-// public/script.js - Frontend Logic Lengkap dengan Auto-loop
 document.addEventListener('DOMContentLoaded', function() {
     loadSystemStatus();
     checkAutoLoopStatus();
@@ -277,4 +274,3 @@ function formatTime(ms) {
 setInterval(() => {
     checkAutoLoopStatus();
 }, 30000);
-[file content end]
