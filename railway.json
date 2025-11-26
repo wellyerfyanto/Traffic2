@@ -1,5 +1,3 @@
-[file name]: railway.json
-[file content begin]
 {
   "build": {
     "builder": "NIXPACKS",
@@ -42,4 +40,3 @@
     }
   }
 }
-[file content end]
