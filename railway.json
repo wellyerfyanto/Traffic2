@@ -1,7 +1,7 @@
 {
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "npm install --omit=dev"
+    "buildCommand": "npm run install-deps"
   },
   "deploy": {
     "startCommand": "node server.js",
@@ -12,20 +12,30 @@
     "config": {
       "phases": {
         "setup": {
-          "nixPkgs": ["chromium"]
+          "nixPkgs": [
+            "chromium",
+            "curl",
+            "wget",
+            "python3",
+            "py3-pip"
+          ],
+          "commands": [
+            "pip3 install requests"
+          ]
         },
         "install": {
           "commands": [
             "export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true",
             "export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser",
-            "npm install --omit=dev"
+            "npm run install-deps"
           ]
         }
       },
       "environment": {
         "NODE_ENV": "production",
         "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
-        "PUPPETEER_EXECUTABLE_PATH": "/usr/bin/chromium-browser"
+        "PUPPETEER_EXECUTABLE_PATH": "/usr/bin/chromium-browser",
+        "PROXY_TEST_URL": "https://crptoajah.blogspot.com"
       }
     }
   }
