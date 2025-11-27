@@ -1,5 +1,3 @@
-[file name]: bot/proxyScraper.js
-[file content begin]
 const axios = require('axios');
 const { HttpsProxyAgent } = require('https-proxy-agent');
 
@@ -304,4 +302,3 @@ class ProxyScraper {
 }
 
 module.exports = ProxyScraper;
-[file content end]
