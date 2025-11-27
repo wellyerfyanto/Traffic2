@@ -1,7 +1,7 @@
 {
   "name": "github-traffic-bot",
-  "version": "2.0.0",
-  "description": "Automated traffic generator untuk repository GitHub dengan proxy system",
+  "version": "2.2.0",
+  "description": "Automated traffic generator untuk repository GitHub dengan multi-protocol proxy system",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "express": "^4.18.2",
-    "puppeteer": "^21.0.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "user-agents": "^1.1.1",
     "axios": "^1.6.2",
-    "https-proxy-agent": "^7.0.2"
+    "https-proxy-agent": "^7.0.2",
+    "socks-proxy-agent": "^8.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
@@ -26,6 +26,9 @@
     "traffic",
     "bot",
     "proxy",
+    "socks",
+    "https",
+    "multi-protocol",
     "automation",
     "puppeteer"
   ],
