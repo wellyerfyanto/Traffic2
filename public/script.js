@@ -28,11 +28,19 @@ async function startSessions() {
             proxyCount: parseInt(document.getElementById('proxyCount').value) || 5,
             autoLoop: document.getElementById('autoLoop').checked
         };
+        // Tambahkan di script.js setelah formData
+        const backupProxies = document.getElementById('backupProxies').value.split('\n').filter(p => p.trim());
+
+       // Jika auto proxy gagal, gunakan backup
+        if (proxySource === 'auto' && backupProxies.length > 0) {
+            formData.backupProxies = backupProxies;
+            }
 
         if (proxySource === 'manual' && formData.proxies.length === 0) {
             alert('❌ Untuk proxy manual, wajib memasukkan minimal 1 proxy!');
             return;
         }
+        
 
         const response = await fetch('/api/start-session', {
             method: 'POST',
