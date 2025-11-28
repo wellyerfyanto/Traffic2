@@ -1,5 +1,3 @@
-[file name]: server.js
-[file content begin]
 const express = require('express');
 const path = require('path');
 const TrafficGenerator = require('./trafficGenerator.js');
@@ -385,4 +383,3 @@ app.listen(PORT, () => {
     console.log(`⚡ Fitur: Multi-Proxy, Auto-Loop, Real-time Monitoring`);
     console.log(`🔧 Auto-Loop: MENGGUNAKAN URL INPUT USER\n`);
 });
-[file content end]
