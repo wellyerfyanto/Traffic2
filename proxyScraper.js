@@ -1,5 +1,3 @@
-[file name]: proxyScraper.js
-[file content begin]
 const axios = require('axios');
 const { HttpsProxyAgent } = require('https-proxy-agent');
 const { SocksProxyAgent } = require('socks-proxy-agent');
@@ -245,4 +243,3 @@ class ProxyScraper {
 }
 
 module.exports = ProxyScraper;
-[file content end]
