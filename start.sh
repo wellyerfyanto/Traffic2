@@ -1,5 +1,3 @@
-[file name]: start.sh
-[file content begin]
 #!/bin/bash
 
 # GitHub Traffic Bot - Auto-Switch Proxy System
@@ -73,4 +71,3 @@ else
     echo "❌ Failed to start application"
     exit 1
 fi
-[file content end]
