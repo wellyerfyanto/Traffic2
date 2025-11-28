@@ -1,5 +1,3 @@
-[file name]: proxyHandler.js
-[file content begin]
 class ProxyHandler {
     constructor() {
         this.proxyList = [];
@@ -167,4 +165,3 @@ class ProxyHandler {
 }
 
 module.exports = ProxyHandler;
-[file content end]
