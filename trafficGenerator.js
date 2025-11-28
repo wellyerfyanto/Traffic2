@@ -1,5 +1,3 @@
-[file name]: trafficGenerator.js
-[file content begin]
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const ProxyHandler = require('./proxyHandler.js');
@@ -925,4 +923,3 @@ class TrafficGenerator {
 }
 
 module.exports = TrafficGenerator;
-[file content end]
