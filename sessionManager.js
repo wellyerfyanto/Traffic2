@@ -1,5 +1,3 @@
-[file name]: sessionManager.js
-[file content begin]
 class SessionManager {
     constructor() {
         this.sessions = new Map();
@@ -31,4 +29,3 @@ class SessionManager {
         this.sessions.clear();
     }
 }
-[file content end]
