@@ -10,34 +10,32 @@ app.use(express.static('public'));
 
 const trafficBot = new TrafficGenerator();
 
-// Health Check Endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({ 
     status: 'OK', 
     timestamp: new Date().toISOString(),
     service: 'GitHub Traffic Bot',
-    version: '2.4.0',
+    version: '2.4.1',
     features: [
-      'Puppeteer-Page-Proxy Integration',
+      'Native Proxy Solution (Stable)',
       'Extended Adaptive Timeout System', 
-      'Proxy Quick-Switch Technology',
       'Multi-Protocol Proxy (HTTP/HTTPS/SOCKS)',
       'Extended User Agent Database',
       'Proxy Speed Classification',
       'Real-time Proxy Analytics',
-      'New Headless Mode',
       'Auto-Loop System',
       'Real-time Monitoring'
     ],
     system: {
-      proxyMethod: 'puppeteer-page-proxy',
+      proxyMethod: 'native-browser-proxy',
       maxTimeout: '240 seconds',
       minTimeout: '45 seconds',
       userAgents: '50+ variants',
-      retryMechanism: '3 attempts with quick-switch'
+      retryMechanism: '3 attempts with fresh browser'
     }
   });
 });
+
 
 // Start Session Endpoint
 app.post('/api/start-session', async (req, res) => {
@@ -703,18 +701,18 @@ app.use((error, req, res, next) => {
     });
 });
 
-// Server Startup
+// ... (semua endpoint lainnya tetap sama seperti sebelumnya)
+
 app.listen(PORT, () => {
-    console.log(`\n🚀 GitHub Traffic Bot Server v2.4.0`);
+    console.log(`\n🚀 GitHub Traffic Bot Server v2.4.1`);
     console.log(`=========================================`);
     console.log(`🌐 Access: http://localhost:${PORT}`);
     console.log(`🔧 Health: http://localhost:${PORT}/health`);
     console.log(`📊 Monitor: http://localhost:${PORT}/monitoring`);
     
     console.log(`\n⚡ System Features:`);
-    console.log(`   🔌 Proxy: Puppeteer-Page-Proxy Integration`);
+    console.log(`   🔌 Proxy: Native Browser Proxy (Stable)`);
     console.log(`   ⏱️  Timeout: Extended Adaptive (45s - 4m)`);
-    console.log(`   🔄 Quick-Switch: Instant Proxy Rotation`);
     console.log(`   👤 User Agents: 50+ Desktop & Mobile Variants`);
     console.log(`   📈 Analytics: Real-time Performance Monitoring`);
     
@@ -725,31 +723,8 @@ app.listen(PORT, () => {
     console.log(`   Platform: ${process.platform}`);
     console.log(`   Port: ${PORT}`);
     
-    console.log(`\n🎯 Ready to generate traffic with advanced proxy system!`);
+    console.log(`\n🎯 Ready to generate traffic dengan NATIVE PROXY SOLUTION!`);
     console.log(`=========================================\n`);
-    
-    // Initial system check
-    setTimeout(async () => {
-        try {
-            const puppeteer = require('puppeteer-extra');
-            const browser = await puppeteer.launch({ 
-                headless: "new",
-                args: ['--no-sandbox', '--disable-setuid-sandbox']
-            });
-            await browser.close();
-            console.log('✅ Puppeteer test: PASSED');
-        } catch (error) {
-            console.log('❌ Puppeteer test: FAILED -', error.message);
-        }
-        
-        // Check puppeteer-page-proxy
-        try {
-            const useProxy = require('puppeteer-page-proxy');
-            console.log('✅ Puppeteer-Page-Proxy: LOADED');
-        } catch (error) {
-            console.log('❌ Puppeteer-Page-Proxy: NOT FOUND - run: npm install puppeteer-page-proxy');
-        }
-    }, 1000);
 });
 
 module.exports = app;
