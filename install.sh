@@ -1,5 +1,3 @@
-[file name]: install.sh
-[file content begin]
 #!/bin/bash
 echo "🔧 Installing GitHub Traffic Bot dependencies..."
 
@@ -13,4 +11,3 @@ npm install socks-proxy-agent@8.0.2
 npm install user-agents@1.1.1
 
 echo "✅ Dependencies installed successfully!"
-[file content end]
