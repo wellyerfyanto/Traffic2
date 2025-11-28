@@ -1,5 +1,3 @@
-[file name]: package.json
-[file content begin]
 {
   "name": "github-traffic-bot",
   "version": "2.5.0",
@@ -47,4 +45,3 @@
     "url": "https://github.com/your-username/github-traffic-bot"
   }
 }
-[file content end]
