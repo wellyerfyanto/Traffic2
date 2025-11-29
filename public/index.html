@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Traffic Bot - Adaptive Timeout System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Traffic Bot By Erimo Hack</h1>
+            <p>Automated traffic generator dengan Adaptive Timeout Proxy System</p>
+            <div class="header-actions">
+                <button onclick="analyzeProxySpeed()">📊 Analyze Proxy Speed</button>
+                <button onclick="goToMonitoring()">📈 Live Monitoring</button>
+            </div>
+        </header>
+
+        <div class="config-section">
+            <h2>⚙️ Konfigurasi Session</h2>
+            <form id="botConfig">
+                <div class="form-group">
+                    <label for="targetUrl">🎯 Target GitHub URL:</label>
+                    <input type="url" id="targetUrl" required 
+                           placeholder="https://github.com/username/repository">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="profiles">👥 Jumlah Profil:</label>
+                        <input type="number" id="profiles" min="1" max="10" value="1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="deviceType">📱 Tipe Device:</label>
+                        <select id="deviceType">
+                            <option value="desktop">Desktop</option>
+                            <option value="mobile">Mobile</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>🔌 Sumber Proxy:</label>
+                    <div>
+                        <label>
+                            <input type="radio" name="proxySource" value="manual" checked>
+                            📝 Manual Input (Proxy List)
+                        </label>
+                        <label>
+                            <input type="radio" name="proxySource" value="auto">
+                            🔄 Auto Proxy Gratis (Adaptive Timeout)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="manualProxyConfig">
+                    <label for="proxies">🔌 Proxy List (satu per baris):</label>
+                    <textarea id="proxies" rows="4" 
+                              placeholder="http://user:pass@host:port&#10;socks5://user:pass@host:port"></textarea>
+                    <small>Wajib: Sistem TIDAK AKAN berjalan tanpa proxy</small>
+                </div>
+
+                <div class="form-group" id="autoProxyConfig" style="display: none;">
+                    <label for="proxyCount">📊 Jumlah Proxy yang Diambil:</label>
+                    <input type="number" id="proxyCount" min="1" max="20" value="5">
+                    <small>Proxy akan di-test dengan adaptive timeout system</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>🔄 Backup Proxy Manual (jika auto gagal):</label>
+                    <textarea id="backupProxies" rows="3" placeholder="103.147.247.1:3000&#10;181.176.161.39:8080&#10;201.229.250.21:80&#10;45.230.8.20:999&#10;186.103.130.91:8080"></textarea>
+                    <small>Proxy cadangan yang sudah di-test bekerja</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="startBtn">🚀 Start Sessions</button>
+                    <button type="button" onclick="testPuppeteer()">🧪 Test Puppeteer</button>
+                    <button type="button" onclick="goToMonitoring()">📊 Monitoring</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Auto-Loop Section -->
+        <div class="config-section">
+            <h2>🔄 Auto-Loop System</h2>
+            
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="autoLoop" checked>
+                    🔄 Enable Auto-Loop (Session akan restart otomatis)
+                </label>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="loopInterval">⏱️ Loop Interval (menit):</label>
+                    <input type="number" id="loopInterval" min="5" max="240" value="30">
+                </div>
+                
+                <div class="form-group">
+                    <label for="maxSessions">📊 Max Sessions:</label>
+                    <input type="number" id="maxSessions" min="1" max="50" value="5">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" onclick="startAutoLoop()">🚀 Start Auto-Loop</button>
+                <button type="button" onclick="stopAutoLoop()">⏹️ Stop Auto-Loop</button>
+                <button type="button" onclick="checkAutoLoopStatus()">🔍 Check Status</button>
+            </div>
+
+            <div id="autoLoopStatus" class="status-display"></div>
+        </div>
+
+        <!-- Speed Analysis Section -->
+        <div class="status-section">
+            <h3>📊 Proxy Speed Analysis</h3>
+            <button type="button" onclick="analyzeProxySpeed()">🔍 Analyze Proxy Speed</button>
+            <div id="speedAnalysis"></div>
+        </div>
+
+        <div class="info-section">
+            <h3>📋 Fitur yang Akan Dijalankan:</h3>
+            <ol>
+                <li>✅ Browser launch dengan adaptive timeout proxy</li>
+                <li>✅ Extended User Agents (30+ Desktop, 20+ Mobile)</li>
+                <li>✅ Buka target URL dengan human-like behavior</li>
+                <li>✅ Proxy speed classification (FAST, MEDIUM, SLOW, VERY_SLOW)</li>
+                <li>✅ Adaptive timeout berdasarkan kecepatan proxy</li>
+                <li>✅ Scroll pelan seperti manusia</li>
+                <li>✅ Klik random postingan</li>
+                <li>✅ Skip iklan Google jika ada</li>
+                <li>✅ Lanjutkan membaca dengan scroll</li>
+                <li>✅ Klik menu Home</li>
+                <li>✅ Clear cache & session</li>
+                <li>✅ Ulangi dari awal untuk setiap session</li>
+                <li>✅ 🔒 SELALU PAKAI PROXY - No Direct Connection</li>
+                <li>✅ ⚡ ADAPTIVE TIMEOUT - Sesuai kecepatan proxy</li>
+                <li>✅ 👤 EXTENDED USER AGENTS - Lebih natural traffic</li>
+            </ol>
+        </div>
+
+        <div class="status-section">
+            <h3>🔍 Status System</h3>
+            <div id="systemStatus">
+                <p>Loading system status...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle proxy config
+        document.querySelectorAll('input[name="proxySource"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const isAuto = this.value === 'auto';
+                document.getElementById('autoProxyConfig').style.display = isAuto ? 'block' : 'none';
+                document.getElementById('manualProxyConfig').style.display = isAuto ? 'none' : 'block';
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
