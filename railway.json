@@ -1,0 +1,38 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "npm install --omit=dev --no-optional --no-audit --no-fund --legacy-peer-deps"
+  },
+  "deploy": {
+    "startCommand": "node server.js",
+    "healthcheckPath": "/health",
+    "healthcheckTimeout": 60,
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 5
+  },
+  "nixpacks": {
+    "config": {
+      "phases": {
+        "setup": {
+          "nixPkgs": ["python3", "curl", "wget", "chromium"],
+          "commands": [
+            "export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true",
+            "export NODE_ENV=production"
+          ]
+        },
+        "install": {
+          "commands": [
+            "npm install --omit=dev --no-optional --no-audit --no-fund --legacy-peer-deps",
+            "npm cache clean --force"
+          ]
+        },
+        "build": {
+          "commands": [
+            "echo '🚀 Build completed successfully - Puppeteer 24+ Optimized'"
+          ]
+        }
+      }
+    }
+  }
+}
