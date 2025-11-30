@@ -15,7 +15,7 @@
     "config": {
       "phases": {
         "setup": {
-          "nixPkgs": ["python3", "curl", "wget", "chromium"],
+          "nixPkgs": ["python3", "curl", "wget", "chromium", "nodejs-18.x"],
           "commands": [
             "export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true",
             "export NODE_ENV=production"
@@ -29,7 +29,7 @@
         },
         "build": {
           "commands": [
-            "echo '🚀 Build completed successfully - Optimized for Railway'"
+            "echo '🚀 Build completed successfully - Node 18 + Puppeteer Optimized'"
           ]
         }
       }
