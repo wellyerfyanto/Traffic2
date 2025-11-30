@@ -1,7 +1,7 @@
 {
   "name": "advanced-traffic-bot",
-  "version": "4.2.0",
-  "description": "Complete Traffic Generator with Viewable Ads Optimization",
+  "version": "4.2.1",
+  "description": "Complete Traffic Generator with Viewable Ads Optimization - Railway Fixed",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,9 +9,13 @@
     "test": "node -e \"console.log('✅ Environment test passed'); process.exit(0);\"",
     "railway-build": "npm install --omit=dev --no-optional --no-audit --no-fund"
   },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "dependencies": {
     "express": "^4.18.2",
-    "puppeteer": "^21.6.1",
+    "puppeteer": "^21.11.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "user-agents": "^1.1.1",
@@ -32,8 +36,5 @@
     "railway"
   ],
   "author": "Traffic Bot Pro",
-  "license": "MIT",
-  "engines": {
-    "node": ">=18.0.0"
-  }
+  "license": "MIT"
 }
